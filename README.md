@@ -1,6 +1,24 @@
-# WEIAP - Rüzgar Enerjisi Yatırım Analiz Platformu
+<div align="center">
 
-Yapay zeka destekli analiz ve merkeziyetsiz depolama ile rüzgar enerjisi yatırımlarını değerlendiren bir hackathon projesi.
+# WEIAP
+### Rüzgar Enerjisi Yatırım Analiz Platformu
+
+Konumdan fizibilite raporuna: meteorolojik veriler, türbin hesaplamaları ve yapay zekâ destekli değerlendirme.
+
+**🏆 Gelecek Üreten Gece Hackathon — 2.lik**  
+Huawei Student Developers (HSD) Fırat × Fırat Blockchain
+
+[Ödül paylaşımı](https://tr.linkedin.com/posts/%C3%B6mer-%C3%A7anak%C3%A7%C4%B1_hsd-f%C4%B1rat%C3%BCniversitesi-blockchain-activity-7414044369030201344-PT1u) · [Orijinal repo](https://github.com/kevseraslan/ruzgar) · [Kurulum](#kurulum)
+
+![WEIAP harita üzerinden konum seçimi](photos/world-map-location-picker.png)
+
+</div>
+
+## Proje Hakkında
+
+WEIAP, rüzgar enerjisi yatırımlarının ön değerlendirmesi için geliştirilen bir ekip projesidir. Haritadan seçilen konuma ait hava verilerini türbin ve maliyet varsayımlarıyla birleştirir; enerji üretimi, geri ödeme süresi ve finansal göstergeleri hesaplar. Yapay zekâ analizi ve Sui / Walrus / Seal entegrasyonları raporlama akışını tamamlar.
+
+Bu repo, ekip çalışmasının Bilal Abiç profilindeki fork'udur. Hackathon ikinciliği ekip olarak kazanılmıştır.
 
 ---
 
@@ -11,9 +29,24 @@ Yapay zeka destekli analiz ve merkeziyetsiz depolama ile rüzgar enerjisi yatır
 - **Dinamik Elektrik Fiyatları** – EPİAŞ (Türkiye PTF), EIA (ABD), ENTSO-E (Avrupa) ve Eurostat API'lerinden anlık fiyatlar çekilir. API erişilemezse GlobalPetrolPrices verileri kullanılır.
 - **Finansal Metrikler** – LCOE (Enerji Maliyeti), NPV (Net Bugünkü Değer), IRR (İç Verim Oranı), ROI ve geri ödeme süresi hesaplanır. Otomatik yatırım önerisi sunulur.
 - **Yapay Zeka Analizi** – OpenAI GPT-4o ile verileriniz analiz edilir ve profesyonel yatırım değerlendirmesi oluşturulur.
-- **Merkeziyetsiz Depolama** – Raporlar PDF olarak oluşturulur, Seal protokolü ile şifrelenir ve Sui blockchain üzerinde Walrus ağına yüklenir. Blob ID ile kalıcı erişim sağlanır.
+- **Merkeziyetsiz Depolama** – Raporlar PDF olarak oluşturulur, Seal protokolü ile şifrelenir ve Sui blockchain üzerinde Walrus ağına yüklenir. Raporlara Blob ID ile, depolama süresi ve ağ erişilebilirliği kapsamında erişilir.
 
 ---
+
+## Kurulum
+
+Node.js ve npm gereklidir.
+
+```bash
+git clone https://github.com/bilalabic/ruzgar.git
+cd ruzgar
+npm ci
+npm run dev
+```
+
+Geliştirme sunucusu: **http://localhost:5173**. Diğer komutlar: `npm run build` ve `npm run preview`.
+
+Meteoroloji, fiyat, AI ve Web3 entegrasyonlarının kullanılabilirliği ilgili servislerin erişimine ve yapılandırmasına bağlıdır. Hesaplamalar seçilen veri dönemi, türbin modeli ve maliyet varsayımlarıyla sınırlı bir ön fizibilite sunar.
 
 ## Ekran Görüntüleri
 
@@ -33,7 +66,7 @@ NPV (Net Bugünkü Değer), IRR (İç Verim Oranı), ROI ve geri ödeme süresin
 ![Ekonomik Fizibilite Raporu](photos/feasibility-report-card.png)
 
 ### Merkeziyetsiz Raporlama (Walrus & Seal)
-Analiz raporunu PDF olarak oluşturun, Seal protokolü ile şifreleyin ve Walrus ağına yükleyin. Blob ID ile raporunuza her zaman erişebilirsiniz.
+Analiz raporunu PDF olarak oluşturun, Seal protokolü ile şifreleyin ve Walrus ağına yükleyin. Depolama süresi ve ağ erişilebilirliği kapsamında Blob ID ile raporunuza erişebilirsiniz.
 
 ![Merkeziyetsiz Raporlama](photos/report-encryption-and-storage.png)
 
@@ -66,6 +99,3 @@ Hackathon kapsamında geliştirilmiştir:
 - **Hesaplamalar**: Teknik formüller [HesaplamalarV1.pdf](references/HesaplamalarV1.pdf) dosyasından referans alınmıştır.
 - **Elektrik Fiyatları**: Fiyat verileri için [GlobalPetrolPrices](https://tr.globalpetrolprices.com/Malaysia/electricity_prices) kaynağına teşekkürler.
 - **Hava Durumu Verileri**: Ücretsiz API desteği için [Open-Meteo](https://open-meteo.com/en/docs) ekibine teşekkürler.
-- **Araştırma**: Araştırma süreçlerindeki katkıları için Gemini'ye teşekkürler.
-
-> Bu README yapay zeka yardımıyla oluşturulmuştur.
